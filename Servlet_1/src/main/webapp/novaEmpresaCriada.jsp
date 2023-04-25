@@ -9,6 +9,6 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		Empresa <%  = nomeEmpresa %> cadastrada!
+		Empresa <%= nomeEmpresa %> cadastrada!
 	</body>
 </html>
