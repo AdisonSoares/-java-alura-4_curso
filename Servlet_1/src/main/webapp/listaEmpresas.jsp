@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<%@page import = "java.util.List, br.com.alura.gerenciador.servlet.Empresa" %>    
+    pageEncoding="UTF-8"%>  
+<%@ page import = "java.util.List, br.com.alura.gerenciador.servlet.Empresa" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
     
 <!DOCTYPE html>
 <html>
@@ -11,14 +12,11 @@
 	</head>
 	<body>
 		<ul>
-		<% 
-			List<Empresa> lista = (List<Empresa>)request.getAttribute("empresas");
-			for (Empresa empresa : lista) { 
-		%>
-			<li> <%= empresa.getNome() %></li>
-		<%	
-			} 
-		%>
+			<c:foreach items="${empresas}" var="empresa">
+				<li> ${empresa.nome} ${empresa.dataAbertura} - 
+					<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
+				</li>
+			</c:foreach>
 		</ul>
 		
 	</body>

@@ -1,14 +1,13 @@
-<%
-	String nomeEmpresa = (String)request.getAttribute("empresa");
-%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</head>
 	<body>
-		Empresa <%= nomeEmpresa %> cadastrada!
+		<c:if test= "${not empty empresa}">
+            Empresa ${ empresa } cadastrada com sucesso!
+        </c:if>
+
+        <c:if test= "${empty empresa}">
+            Nenhuma empresa cadastrada!
+        </c:if>
 	</body>
 </html>
