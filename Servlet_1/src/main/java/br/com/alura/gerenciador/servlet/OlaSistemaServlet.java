@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/oi")
-public class OlaServlet extends HttpServlet{
+public class OlaSistemaServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		PrintWriter out = resp.getWriter();
+	protected void service(HttpServletRequest req, HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
-		out.println("Ola, sistema servlet!");
+		out.println("Olá sistema servlet!!");
 		out.println("</body>");
 		out.println("</html>");
 		
-		System.out.println("O servlet OlaServlet foi chamado!!!");
+		System.out.println("O servlet OlaSistemaServlet foi chamado!");
 	}
 
 }
