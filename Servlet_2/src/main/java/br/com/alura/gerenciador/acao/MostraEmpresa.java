@@ -1,23 +1,21 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MostraEmpresaServlet
- */
-@WebServlet("/mostraEmpresa")
-public class MostraEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import br.com.alura.gerenciador.modelo.Banco;
+import br.com.alura.gerenciador.modelo.Empresa;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+public class MostraEmpresa {
+
+	public void executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
+		System.out.println("Mostrando empresa!");
 		
 		String parametroId = request.getParameter("id");
 		Integer id = Integer.valueOf(parametroId);
