@@ -4,3 +4,4 @@
 bin/
 pom.xml
 .settings
+/build/

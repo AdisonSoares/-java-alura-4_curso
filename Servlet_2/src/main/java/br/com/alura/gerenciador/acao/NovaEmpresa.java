@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao{
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 
 		System.out.println("Cadastrando nova empresa");
 
@@ -36,7 +37,7 @@ public class NovaEmpresa {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 
-		response.sendRedirect("entrada?acao=ListaEmpresa");
+		return "redirect:entrada?acao=ListaEmpresa";
 	}
 
 }

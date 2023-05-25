@@ -12,6 +12,18 @@
 		<title>Java Standar Taglib</title>
 	</head>
 	<body>
+	
+		<c:import url="logout-parcial.jsp"/>
+	
+		Usuario logado: ${usuarioLogado.login}
+		<br>
+		<br>
+		<br>
+	
+		<c:if test="${not empty empresa }">
+			Empresa ${empresa} cadastrada com sucesso!
+		</c:if>
+	
 		Lista de empresas:<br />
 		
 		<ul>
