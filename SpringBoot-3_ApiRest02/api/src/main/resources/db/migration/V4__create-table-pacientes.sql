@@ -14,6 +14,6 @@ create table pacientes(
     telefone varchar(20) not null,
     ativo tinyint not null,
 
-    primary key(id)
+    primary key(id) 
 
 );
