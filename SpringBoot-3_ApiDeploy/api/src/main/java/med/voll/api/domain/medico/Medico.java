@@ -39,7 +39,7 @@ public class Medico {
 
     private Boolean ativo;
 
-    public Medico(DadosCadastroMedico dados) {
+    public Medico(DadosCadastroMedicoDTO dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
@@ -49,7 +49,7 @@ public class Medico {
         this.endereco = new Endereco(dados.endereco());
     }
 
-    public void atualizarInformacoes(DadosAtualizacaoMedico dados) {
+    public void atualizarInformacoes(DadosAtualizacaoMedicoDTO dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }

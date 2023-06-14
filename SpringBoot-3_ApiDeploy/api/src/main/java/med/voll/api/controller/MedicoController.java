@@ -18,10 +18,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
-import med.voll.api.domain.medico.DadosAtualizacaoMedico;
-import med.voll.api.domain.medico.DadosCadastroMedico;
+import med.voll.api.domain.medico.DadosAtualizacaoMedicoDTO;
+import med.voll.api.domain.medico.DadosCadastroMedicoDTO;
 import med.voll.api.domain.medico.DadosDetalhamentoMedicoDTO;
-import med.voll.api.domain.medico.DadosListagemMedico;
+import med.voll.api.domain.medico.DadosListagemMedicoDTO;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.medico.MedicoRepository;
 
@@ -36,7 +36,7 @@ public class MedicoController {
 	@SuppressWarnings("rawtypes")
 	@PostMapping
 	@Transactional
-	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedicoDTO dados, UriComponentsBuilder uriBuilder) {
 		var medico = new Medico(dados);
 		repository.save(medico);
 		var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
@@ -45,16 +45,16 @@ public class MedicoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<Page<DadosListagemMedico>> listar(
+	public ResponseEntity<Page<DadosListagemMedicoDTO>> listar(
 			@PageableDefault(size = 10, sort = { "nome" }) Pageable paginacao) {
-		var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+		var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedicoDTO::new);
 		return ResponseEntity.ok(page);
 	}
 
 	@SuppressWarnings("rawtypes")
 	@PutMapping
 	@Transactional
-	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
+	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoMedicoDTO dados) {
 		var medico = repository.getReferenceById(dados.id());
 		medico.atualizarInformacoes(dados);
 		return ResponseEntity.ok(new DadosDetalhamentoMedicoDTO(medico));
