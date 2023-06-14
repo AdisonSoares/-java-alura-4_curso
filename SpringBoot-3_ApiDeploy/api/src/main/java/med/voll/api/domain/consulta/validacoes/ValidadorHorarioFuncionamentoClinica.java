@@ -1,0 +1,24 @@
+package med.voll.api.domain.consulta.validacoes;
+
+import java.time.DayOfWeek;
+
+import org.springframework.stereotype.Component;
+
+import med.voll.api.domain.ValidacaoException;
+import med.voll.api.domain.consulta.DadosAgendamentoConsultaDTO;
+
+
+@Component
+public class ValidadorHorarioFuncionamentoClinica implements ValidadorAgendamentoDeConsulta{
+	public void validar(DadosAgendamentoConsultaDTO dados) {
+		var dataConsulta = dados.data();
+		
+		var domingo = dataConsulta.getDayOfWeek().equals(DayOfWeek.SUNDAY);
+		var antesDaAberturaDaClinica = dataConsulta.getHour() < 7;
+		var depoisDoFechamentoDaClinica = dataConsulta.getHour() > 18;
+		
+		if(domingo || antesDaAberturaDaClinica || depoisDoFechamentoDaClinica) {
+			throw new ValidacaoException("Consulta fora do expediente da clínica!");
+		}
+	}
+}
