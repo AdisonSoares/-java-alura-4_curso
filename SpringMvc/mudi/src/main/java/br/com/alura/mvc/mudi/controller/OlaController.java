@@ -9,6 +9,6 @@ public class OlaController {
     @GetMapping("/ola")
     public String ola(Model model){
         model.addAttribute("nome", " Mundo");
-        return "ola";
+        return "pedido/ola";
     }
 }
