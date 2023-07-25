@@ -1,4 +1,4 @@
-# Java e Spring Boot e Java Web: crie aplicações com Servlets e MVC
+# Java Spring Boot e Java Web: crie aplicações com Servlets e MVC
 
 Java Spring Boot (Spring Boot) é uma ferramenta que torna o desenvolvimento de aplicativos web e microsserviços com Spring Framework mais rápido e fácil.
 Nesta formação você vai aprender como utilizar o framework e será capaz de criar aplicações com maior velocidade e simplicidade.
